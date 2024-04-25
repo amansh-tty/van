@@ -31,7 +31,7 @@ const populateEvent = (query: any) => {
 export async function createEvent({ userId, event, path }: CreateEventParams) {
   try {
 
-    console.log('hkjhkhkjhjkhkjl')
+    console.log('this is before connetctiot to database')
 
     await connectToDatabase()
 
