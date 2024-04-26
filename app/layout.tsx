@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: 'Eventbox',
   description: 'Eventbox is a platform for event management.',
   icons: {
-    icon: '/assets/images/logo.svg'
+    icon: '/assets/images/logo2.svg'
   }
 }
 

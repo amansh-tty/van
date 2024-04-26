@@ -7,6 +7,7 @@ import Event from '@/lib/database/models/event.model'
 import User from '@/lib/database/models/user.model'
 import Category from '@/lib/database/models/category.model'
 import { handleError } from '@/lib/utils'
+import { ObjectId } from 'mongodb'
 
 import {
   CreateEventParams,
@@ -31,14 +32,14 @@ const populateEvent = (query: any) => {
 export async function createEvent({ userId, event, path }: CreateEventParams) {
   try {
 
-    console.log('this is before connetctiot to database')
-
+    console.log('this is before connetctiot to database ',userId, event, path)
+    console.log(typeof userId, userId.userId)
+    const parseUserId = userId.userId
     await connectToDatabase()
-
-    const organizer = await User.findById(userId)
+    const organizer = await User.findById(new ObjectId(parseUserId))
     if (!organizer) throw new Error('Organizer not found')
-
-    const newEvent = await Event.create({ ...event, category: event.categoryId, organizer: userId })
+      console.log('organizer foudn >>>>')
+    const newEvent = await Event.create({ ...event, category: event.categoryId, organizer: new ObjectId(parseUserId) })
     revalidatePath(path)
 
     return JSON.parse(JSON.stringify(newEvent))

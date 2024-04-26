@@ -1,3 +1,4 @@
+
 "use server"
 
 import { CreateCategoryParams } from "@/types"
@@ -28,3 +29,6 @@ export const getAllCategories = async () => {
     handleError(error)
   }
 }
+
+
+

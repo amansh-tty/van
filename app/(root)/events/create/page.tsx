@@ -4,7 +4,7 @@ import { auth } from "@clerk/nextjs";
 const CreateEvent = () => {
   const { sessionClaims } = auth();
  console.log('hi there',sessionClaims?.userId );
-  const userId = sessionClaims?.userId as string;
+  const userId = sessionClaims?.userId as any; // using any instead of public_metadata type
   
 
   return (

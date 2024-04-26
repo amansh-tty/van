@@ -786,11 +786,11 @@ const OrderSchema = new Schema({
     type: String,
   },
   event: {
-    type: Schema.Types.ObjectId,
+    type: String,//Schema.Types.ObjectId,
     ref: 'Event',
   },
   buyer: {
-    type: Schema.Types.ObjectId,
+    type: String,//Schema.Types.ObjectId,
     ref: 'User',
   },
 })
@@ -1181,7 +1181,7 @@ export async function getOrdersByEvent({ searchString, eventId }: GetOrdersByEve
     await connectToDatabase()
 
     if (!eventId) throw new Error('Event ID is required')
-    const eventObjectId = new ObjectId(eventId)
+    const eventObjectId = eventId//new ObjectId(eventId)
 
     const orders = await Order.aggregate([
       {
