@@ -63,7 +63,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
 
     if(type === 'Create') {
       try {
-        console.log(values)
+        console.log('creating event with ', values)
         const newEvent = await createEvent({
           event: { ...values, imageUrl: uploadedImageUrl },
           userId,
@@ -160,7 +160,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
                   <FormMessage />
                 </FormItem>
               )}
-            />
+            />FileUploader
         </div>
 
         <div className="flex flex-col gap-5 md:flex-row">
