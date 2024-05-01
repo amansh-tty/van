@@ -6,7 +6,7 @@ import { clerkClient } from '@clerk/nextjs'
 import { NextResponse } from 'next/server'
  
 export async function POST(req: Request) {
-  console.log('what a sfjlsdkfjsadkl')
+  console.log('POST request')
  
   // You can find this in the Clerk Dashboard -> Webhooks -> choose the webhook
   const WEBHOOK_SECRET = process.env.WEBHOOK_SECRET
@@ -56,7 +56,7 @@ export async function POST(req: Request) {
   const eventType = evt.type;
  
   if(eventType === 'user.created') {
-    console.log('user created event data >>>', evt.data)
+    console.log('user created event triggerd')
     const { id, email_addresses, image_url, first_name, last_name, username } = evt.data;
 
     const user = {

@@ -10,6 +10,7 @@ import React from 'react'
 
 const ProfilePage = async ({ searchParams }: SearchParamProps) => {
   const { sessionClaims } = auth();
+  console.log('session claims >>>', sessionClaims, typeof sessionClaims)
   const userId = sessionClaims?.userId as string;
   console.log('user id >>', userId)
   const ordersPage = Number(searchParams?.ordersPage) || 1;
@@ -19,6 +20,9 @@ const ProfilePage = async ({ searchParams }: SearchParamProps) => {
 
   const orderedEvents = orders?.data.map((order: IOrder) => order.event) || [];
   const organizedEvents = await getEventsByUser({ userId, page: eventsPage })
+
+  console.log('organizedEvents getiing listed bro',organizedEvents)
+  console.log('orderedEvents if getting liste',orderedEvents)
 
   return (
     <>
